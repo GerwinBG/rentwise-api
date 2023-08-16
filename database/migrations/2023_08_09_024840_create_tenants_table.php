@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->unsignedBigInteger('apartment_id');
             $table->string('email');
-            $table->string('contactNumber');
+            $table->string('contact');
             $table->unsignedInteger('occupantsQty');
             $table->timestamps();
 
