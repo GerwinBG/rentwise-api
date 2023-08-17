@@ -18,7 +18,7 @@ class ApartmentFactory extends Factory
     public function definition(): array
     {
         return [
-            'unit' => 'A' . fake()->numberBetween(1,10),
+            'unit' => 'A' . fake()->numberBetween(1, 10),
             'address' => fake()->address(),
             'description' => fake()->sentence(),
             'price' => fake()->randomElement([2500, 3000, 3500]),

@@ -27,11 +27,8 @@ class DatabaseSeeder extends Seeder
 
 
         Owner::factory(10)
-        ->hasApartments(5)
+        ->has(Apartment::factory(5)->hasTenant(3))
         ->create();
 
-        Tenant::factory(25)
-        ->hasApartment(1)
-        ->create();
     }
 }
