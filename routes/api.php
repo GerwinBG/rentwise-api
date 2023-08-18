@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\Api\ApartmentController;
+use App\Http\Controllers\Api\OwnerController;
+use App\Http\Controllers\Api\TenantController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -17,3 +20,13 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+
+Route::group(['prefix' => 'v1'], function (){
+    
+    Route::apiResource('owners',OwnerController::class);
+    Route::apiResource('apartments',ApartmentController::class);
+    Route::apiResource('tenants',TenantController::class);
+
+});
+
