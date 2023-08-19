@@ -22,7 +22,8 @@ class TenantFactory extends Factory
             'apartment_id' => Apartment::factory(),
             'email' => fake()->unique()->safeEmail(),
             'contact' => fake()->phoneNumber(),
-            'occupantsQty' => fake()->numberBetween(1,5)
+            'occupantsQty' => fake()->numberBetween(1,5),
+            'start_date' => fake()->dateTimeThisYear()
         ];
     }
 }

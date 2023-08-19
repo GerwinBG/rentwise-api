@@ -21,6 +21,7 @@ class TenantResource extends JsonResource
             'email' => $this->email,
             'contact' => $this->contact,
             'occupantsQty' => $this->occupantsQty,
+            'startDate' => $this->start_date,
         ];
     }
 }
