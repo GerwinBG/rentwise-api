@@ -16,7 +16,7 @@ class OwnerController extends Controller
      */
     public function index()
     {
-        return OwnerResource::collection(Owner::paginate());
+        return OwnerResource::collection(Owner::get());
     }
 
 

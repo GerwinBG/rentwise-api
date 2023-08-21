@@ -8,6 +8,7 @@ use App\Http\Requests\ApartmentUpdateRequest;
 use App\Http\Resources\ApartmentResource;
 use App\Models\Apartment;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ApartmentController extends Controller
 {
@@ -18,9 +19,6 @@ class ApartmentController extends Controller
     {
         $query = Apartment::query();
 
-        if (isset($request['isOccupied'])) {
-            $query->where('is_occupied', $request->isOccupied);
-        }
 
         if ($request->ownerId) {
             $query->where('owner_id', $request->ownerId);
@@ -42,7 +40,7 @@ class ApartmentController extends Controller
                 'description' => $request->description,
                 'price' => $request->price,
                 'owner_id' => $request->ownerId,
-                'is_occupied' => $request->isOccupied,
+                
             ])
         );
     }
@@ -69,11 +67,12 @@ class ApartmentController extends Controller
         if (isset($request->description)) {
             $apartment->description = $request->description;
         }
+        if (isset($request->price)) {
+            $apartment->price = $request->price;
+        }
+
         if (isset($request->ownerId)) {
             $apartment->owner_id = $request->ownerId;
-        }
-        if (isset($request->isOccupied)) {
-            $apartment->is_occupied = $request->isOccupied;
         }
        
         $apartment->save();

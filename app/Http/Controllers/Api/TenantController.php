@@ -10,6 +10,7 @@ use App\Models\Apartment;
 use App\Models\Tenant;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class TenantController extends Controller
 {

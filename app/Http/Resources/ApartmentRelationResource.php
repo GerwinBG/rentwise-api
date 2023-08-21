@@ -5,7 +5,7 @@ namespace App\Http\Resources;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class OwnerResource extends JsonResource
+class ApartmentRelationResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -16,12 +16,11 @@ class OwnerResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'name' => $this->name,
-            'email' => $this->email,
+            'unit' => $this->unit,
+            'ownerId' => $this->owner_id,
             'address' => $this->address,
-            'contact' => $this->contact,
-            'username' => $this->username,
-            'apartments' => ApartmentRelationResource::collection($this->apartments),
+            'description' => $this->description,
+            'price' => $this->price,
         ];
     }
 }

@@ -23,7 +23,6 @@ class ApartmentFactory extends Factory
             'description' => fake()->sentence(),
             'price' => fake()->randomElement([2500, 3000, 3500]),
             'owner_id' => Owner::factory(),
-            'is_occupied' => fake()->randomElement([true, false])
         ];
     }
 }

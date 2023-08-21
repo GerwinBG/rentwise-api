@@ -25,11 +25,10 @@ class ApartmentUpdateRequest extends FormRequest
     {
         return [
             'unit' => 'sometimes|required',
-            'address' => 'sometimes|required',
+            'address' => '',
             'description' => 'sometimes|required',
             'price' => 'sometimes|required',
             'ownerId' => 'sometimes|required|exists:owners,id',
-            'isOccupied' => 'sometimes|required|boolean',
         ];
     }
     protected function failedValidation(Validator $validator)

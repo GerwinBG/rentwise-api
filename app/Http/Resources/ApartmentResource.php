@@ -21,7 +21,7 @@ class ApartmentResource extends JsonResource
             'description' => $this->description,
             'price' => $this->price,
             'ownerId' => $this->owner_id,
-            'isOccupied' => $this->is_occupied,
+            'tenant' => TenantResource::make($this->tenant)
         ];
     }
 }

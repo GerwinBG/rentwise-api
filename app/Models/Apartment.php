@@ -15,7 +15,6 @@ class Apartment extends Model
         'description',
         'price',
         'owner_id',
-        'is_occupied',
     ];
 
     public function owner()

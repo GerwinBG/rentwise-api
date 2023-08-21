@@ -22,6 +22,7 @@ class TenantResource extends JsonResource
             'contact' => $this->contact,
             'occupantsQty' => $this->occupantsQty,
             'startDate' => $this->start_date,
+            'apartment' => ApartmentRelationResource::make($this->apartment)
         ];
     }
 }
