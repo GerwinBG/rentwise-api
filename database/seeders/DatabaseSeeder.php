@@ -5,8 +5,6 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 use App\Models\Apartment;
-use App\Models\Owner;
-use App\Models\Tenant;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
@@ -26,7 +24,7 @@ class DatabaseSeeder extends Seeder
 
 
 
-        Owner::factory(5)
+        User::factory(5)
         ->has(Apartment::factory(5)->hasTenant(3))
         ->create();
 

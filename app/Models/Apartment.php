@@ -14,12 +14,12 @@ class Apartment extends Model
         'address',
         'description',
         'price',
-        'owner_id',
+        'user_id',
     ];
 
-    public function owner()
+    public function user()
     {
-        return $this->belongsTo(Owner::class);
+        return $this->belongsTo(User::class);
     }
 
     public function tenant()

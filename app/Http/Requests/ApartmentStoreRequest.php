@@ -28,7 +28,7 @@ class ApartmentStoreRequest extends FormRequest
             'address' => '',
             'description' => 'required',
             'price' => 'required',
-            'ownerId' => 'required|exists:owners,id',
+            'userId' => 'required|exists:users,id',
         ];
     }
     protected function failedValidation(Validator $validator)

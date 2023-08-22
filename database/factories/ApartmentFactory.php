@@ -2,7 +2,7 @@
 
 namespace Database\Factories;
 
-use App\Models\Owner;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -22,7 +22,7 @@ class ApartmentFactory extends Factory
             'address' => fake()->address(),
             'description' => fake()->sentence(),
             'price' => fake()->randomElement([2500, 3000, 3500]),
-            'owner_id' => Owner::factory(),
+            'user_id' => User::factory(),
         ];
     }
 }

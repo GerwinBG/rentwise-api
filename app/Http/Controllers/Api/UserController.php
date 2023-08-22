@@ -3,30 +3,30 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\OwnerStoreRequest;
-use App\Http\Requests\OwnerUpdateRequest;
-use App\Http\Resources\OwnerResource;
-use App\Models\Owner;
+use App\Http\Requests\UserStoreRequest;
+use App\Http\Requests\UserUpdateRequest;
+use App\Http\Resources\UserResource;
+use App\Models\User;
 use Illuminate\Http\Request;
 
-class OwnerController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return OwnerResource::collection(Owner::get());
+        return UserResource::collection(User::get());
     }
 
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(OwnerStoreRequest $request)
+    public function store(UserStoreRequest $request)
     {
-       return OwnerResource::make(
-            Owner::create([
+       return UserResource::make(
+            User::create([
                 'name' => $request->name,
                 'address' => $request->address,
                 'email' => $request->email,
@@ -40,48 +40,48 @@ class OwnerController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Owner $owner)
+    public function show(User $user)
     {
-        return OwnerResource::make($owner);
+        return UserResource::make($user);
     }
 
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(OwnerUpdateRequest $request, Owner $owner)
+    public function update(UserUpdateRequest $request, User $user)
     {
 
         if (isset($request->name)) {
-            $owner->name = $request->name;
+            $user->name = $request->name;
         }
         if (isset($request->address)) {
-            $owner->address = $request->address;
+            $user->address = $request->address;
         }
         if (isset($request->email)) {
-            $owner->email = $request->email;
+            $user->email = $request->email;
         }
         if (isset($request->contact)) {
-            $owner->contact = $request->contact;
+            $user->contact = $request->contact;
         }
         if (isset($request->username)) {
-            $owner->username = $request->username;
+            $user->username = $request->username;
         }
         if (isset($request->password)) {
-            $owner->password = $request->password;
+            $user->password = $request->password;
         }
         
-        $owner->save();
+        $user->save();
 
-        return OwnerResource::make($owner);
+        return UserResource::make($user);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Owner $owner)
+    public function destroy(User $user)
     {
-        $owner->delete();
+        $user->delete();
         return response()->json([
             'success' => true,
             'message' => 'Deleted successfully'

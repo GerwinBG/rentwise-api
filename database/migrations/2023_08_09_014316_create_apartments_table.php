@@ -17,10 +17,10 @@ return new class extends Migration
             $table->text('address')->nullable();
             $table->text('description');
             $table->unsignedInteger('price');
-            $table->unsignedBigInteger('owner_id');
+            $table->unsignedBigInteger('user_id');
             $table->timestamps();
 
-            $table->foreign('owner_id')->references('id')->on('owners');
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

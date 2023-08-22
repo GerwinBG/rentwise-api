@@ -17,7 +17,7 @@ class ApartmentRelationResource extends JsonResource
         return [
             'id' => $this->id,
             'unit' => $this->unit,
-            'ownerId' => $this->owner_id,
+            'userId' => $this->user_id,
             'address' => $this->address,
             'description' => $this->description,
             'price' => $this->price,

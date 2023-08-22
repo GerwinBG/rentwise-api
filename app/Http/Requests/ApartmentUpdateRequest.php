@@ -28,7 +28,7 @@ class ApartmentUpdateRequest extends FormRequest
             'address' => '',
             'description' => 'sometimes|required',
             'price' => 'sometimes|required',
-            'ownerId' => 'sometimes|required|exists:owners,id',
+            'userId' => 'sometimes|required|exists:users,id',
         ];
     }
     protected function failedValidation(Validator $validator)

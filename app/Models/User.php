@@ -19,8 +19,12 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'address',
         'email',
+        'contact',
+        'username',
         'password',
+        'role',
     ];
 
     /**
@@ -42,4 +46,10 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function apartments()
+    {
+        return $this->hasMany(Apartment::class);
+    }
+
 }

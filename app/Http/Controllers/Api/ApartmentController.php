@@ -20,8 +20,8 @@ class ApartmentController extends Controller
         $query = Apartment::query();
 
 
-        if ($request->ownerId) {
-            $query->where('owner_id', $request->ownerId);
+        if ($request->userId) {
+            $query->where('user_id', $request->userId);
         }
 
 
@@ -39,7 +39,7 @@ class ApartmentController extends Controller
                 'address' => $request->address,
                 'description' => $request->description,
                 'price' => $request->price,
-                'owner_id' => $request->ownerId,
+                'user_id' => $request->userId,
                 
             ])
         );
@@ -48,16 +48,18 @@ class ApartmentController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Apartment $apartment)
+    public function show($id)
     {
+        $apartment = Apartment::find($id);
         return ApartmentResource::make($apartment);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(ApartmentUpdateRequest $request, Apartment $apartment)
+    public function update(ApartmentUpdateRequest $request, $id)
     {
+        $apartment = Apartment::find($id);
         if (isset($request->unit)) {
             $apartment->unit = $request->unit;
         }
@@ -71,8 +73,8 @@ class ApartmentController extends Controller
             $apartment->price = $request->price;
         }
 
-        if (isset($request->ownerId)) {
-            $apartment->owner_id = $request->ownerId;
+        if (isset($request->userId)) {
+            $apartment->user_id = $request->userId;
         }
        
         $apartment->save();
@@ -83,8 +85,9 @@ class ApartmentController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Apartment $apartment)
+    public function destroy($id)
     {
+        $apartment = Apartment::find($id);
         $apartment->delete();
         return response()->json([
             'success' => true,
