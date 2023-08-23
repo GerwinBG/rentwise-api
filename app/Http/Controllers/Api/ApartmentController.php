@@ -8,6 +8,7 @@ use App\Http\Requests\ApartmentUpdateRequest;
 use App\Http\Resources\ApartmentResource;
 use App\Models\Apartment;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class ApartmentController extends Controller
@@ -33,22 +34,22 @@ class ApartmentController extends Controller
      */
     public function store(ApartmentStoreRequest $request)
     {
-        return ApartmentResource::make(
-            Apartment::create([
-                'unit' => $request->unit,
-                'address' => $request->address,
-                'description' => $request->description,
-                'price' => $request->price,
-                'user_id' => $request->userId,
-                
-            ])
-        );
+        $user = Auth::user();
+        $apartment = Apartment::create([
+            'unit' => $request->unit,
+            'address' => $request->address,
+            'description' => $request->description,
+            'price' => $request->price,
+            'user_id' => $user->id,
+            
+        ]);
+        return ApartmentResource::make($apartment);
     }
 
     /**
      * Display the specified resource.
      */
-    public function show($id)
+    public function show(Apartment $id)
     {
         $apartment = Apartment::find($id);
         return ApartmentResource::make($apartment);
@@ -71,10 +72,6 @@ class ApartmentController extends Controller
         }
         if (isset($request->price)) {
             $apartment->price = $request->price;
-        }
-
-        if (isset($request->userId)) {
-            $apartment->user_id = $request->userId;
         }
        
         $apartment->save();
